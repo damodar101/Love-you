@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#e987b5" />
+  <meta name="description" content="A little universe made with love." />
+  <title>Our Little Universe ✦</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <audio id="bgMusic" src="song.mp3" loop preload="auto"></audio>
+  <button class="music-toggle" id="musicToggle" aria-label="Toggle music">♫ <span>Music off</span></button>
+
+  <main>
+    <section class="screen active" id="welcome">
+      <div class="eyebrow"><span class="sparkle">✦</span> A LITTLE SOMETHING FOR YOU <span class="sparkle">✦</span></div>
+      <div class="planet-wrap"><div class="planet"><div class="planet-shine"></div><span>♡</span></div><i class="orbit orbit-a"></i><i class="orbit orbit-b"></i></div>
+      <h1>Welcome to<br><em>our little universe.</em></h1>
+      <p class="lead">A tiny adventure, a little laughter,<br>and a whole lot of affection.</p>
+      <button class="primary-btn" id="enterBtn">Enter my universe <span>→</span></button>
+      <p class="tiny-note">P.S. You are the favourite part of this universe.</p>
+    </section>
+
+    <section class="screen" id="hub">
+      <div class="topline"><span>YOUR LITTLE UNIVERSE</span><span id="progressLabel">0 / 3 adventures</span></div>
+      <h2>Hey, stargirl <span class="pink">✧</span></h2>
+      <p class="lead">Pick a little adventure. I made each one just for you.</p>
+      <div class="adventure-grid">
+        <button class="adventure-card" data-open="collector"><span class="card-icon">♡</span><b>Heart Collector</b><small>Catch 10 floating hearts</small><span class="card-arrow">↗</span></button>
+        <button class="adventure-card" data-open="quiz"><span class="card-icon">✿</span><b>Us, in a nutshell</b><small>A tiny fun love quiz</small><span class="card-arrow">↗</span></button>
+        <button class="adventure-card" data-open="bubble"><span class="card-icon">◉</span><b>Bubble Pop</b><small>Pop 12 dreamy bubbles</small><span class="card-arrow">↗</span></button>
+      </div>
+      <div class="hub-footer">No scores to impress. Just have fun, okay? <span>♡</span></div>
+      <button class="text-btn" id="letterBtn">I have a little letter for you →</button>
+    </section>
+
+    <section class="screen game-screen" id="collector">
+      <button class="back-btn" data-back>← Universe</button>
+      <div class="game-heading"><span class="eyebrow">ADVENTURE 01</span><h2>Catch my <em>hearts.</em></h2><p>Tap or click 10 hearts before they float away!</p></div>
+      <div class="scoreline"><span>HEARTS COLLECTED</span><strong id="heartScore">0 <small>/ 10</small></strong></div>
+      <div class="playfield" id="playfield"><div class="field-hint" id="fieldHint">Tap the floating hearts ♡</div></div>
+      <p class="game-caption" id="collectorCaption">Each heart comes with a tiny reminder.</p>
+      <button class="secondary-btn hidden" id="collectorDone">Back to adventures</button>
+    </section>
+
+    <section class="screen" id="quiz">
+      <button class="back-btn" data-back>← Universe</button>
+      <div class="game-heading"><span class="eyebrow">ADVENTURE 02</span><h2>How well do you know <em>us?</em></h2><p>No pressure. Being cute is the only qualification.</p></div>
+      <div class="quiz-card">
+        <div class="quiz-meta"><span id="quizCount">QUESTION 1 / 5</span><span>♡</span></div>
+        <h3 id="quizQuestion">Loading question...</h3>
+        <div class="answers" id="answers"></div>
+        <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
+        <button class="secondary-btn hidden" id="nextQuestion">Next question →</button>
+      </div>
+    </section>
+
+    <section class="screen game-screen" id="bubble">
+      <button class="back-btn" data-back>← Universe</button>
+      <div class="game-heading"><span class="eyebrow">ADVENTURE 03</span><h2>Pop some <em>happiness.</em></h2><p>Tap 12 bubbles and let a little joy float around.</p></div>
+      <div class="scoreline"><span>BUBBLES POPPED</span><strong id="bubbleScore">0 <small>/ 12</small></strong></div>
+      <div class="bubble-field" id="bubbleField" aria-label="Bubble popping game"></div>
+      <p class="game-caption" id="bubbleCaption">Every pop comes with a tiny happy thought.</p>
+      <button class="secondary-btn hidden" id="bubbleDone">Back to adventures</button>
+    </section>
+
+    <section class="screen letter-screen" id="letter">
+      <button class="back-btn" data-back>← Universe</button>
+      <div class="envelope-wrap" id="envelopeWrap">
+        <button class="envelope" id="openEnvelope" aria-label="Open your letter"><span class="envelope-heart">♡</span><span class="envelope-label">A little letter for you</span></button>
+        <p class="tap-note">Tap the envelope to open</p>
+      </div>
+      <article class="letter hidden" id="letterContent">
+        <span class="eyebrow">JUST FOR YOU</span>
+        <h2>Dear you, <em>my favourite hello.</em></h2>
+        <p>I don't need a perfect universe. A little laughter, silly conversations, unexpected smiles, and the chance to make you feel special — that's already pretty wonderful.</p>
+        <p>Thank you for being a lovely part of my days. I hope this tiny world made you smile, even for a moment.</p>
+        <p class="signature">With a little extra affection, <br><span>someone who is glad you're here ♡</span></p>
+        <button class="primary-btn" id="finalBtn">One last little thing →</button>
+      </article>
+    </section>
+
+    <section class="screen final-screen" id="final">
+      <div class="final-heart">♡</div>
+      <span class="eyebrow">A LITTLE TRUTH</span>
+      <h1>Out of all the stars,<br><em>I'm glad I found you.</em></h1>
+      <p class="lead">Thanks for exploring my little universe.<br>Now go on and keep being wonderfully you.</p>
+      <div class="final-actions"><button class="primary-btn" id="replayBtn">Explore again ↺</button><button class="secondary-btn" id="homeBtn">Back to the beginning</button></div>
+      <p class="tiny-note">Made with ♡, just for your smile.</p>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
